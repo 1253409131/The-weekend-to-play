@@ -7,6 +7,13 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3548404F131E8E1CC511003E /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = ADFD9174E14D5337831C7338 /* libPods.a */; };
+		7A23CFA11C3A4E3900BD343A /* DiscoverViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A23CF911C3A4E3900BD343A /* DiscoverViewController.m */; };
+		7A23CFA21C3A4E3900BD343A /* MainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A23CF971C3A4E3900BD343A /* MainViewController.m */; };
+		7A23CFA31C3A4E3900BD343A /* MineViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A23CF9D1C3A4E3900BD343A /* MineViewController.m */; };
+		7A23CFA61C3A507200BD343A /* MainStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7A23CFA51C3A507200BD343A /* MainStoryboard.storyboard */; };
+		7A23CFA81C3A509900BD343A /* DiscoverStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7A23CFA71C3A509900BD343A /* DiscoverStoryboard.storyboard */; };
+		7A23CFAA1C3A50C900BD343A /* MineStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7A23CFA91C3A50C900BD343A /* MineStoryboard.storyboard */; };
 		7ADE229B1C3A1C3A0039245D /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 7ADE229A1C3A1C3A0039245D /* main.m */; };
 		7ADE229E1C3A1C3A0039245D /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 7ADE229D1C3A1C3A0039245D /* AppDelegate.m */; };
 		7ADE22A01C3A1C3A0039245D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7ADE229F1C3A1C3A0039245D /* Assets.xcassets */; };
@@ -14,6 +21,15 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		7A23CF901C3A4E3900BD343A /* DiscoverViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DiscoverViewController.h; sourceTree = "<group>"; };
+		7A23CF911C3A4E3900BD343A /* DiscoverViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DiscoverViewController.m; sourceTree = "<group>"; };
+		7A23CF961C3A4E3900BD343A /* MainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainViewController.h; sourceTree = "<group>"; };
+		7A23CF971C3A4E3900BD343A /* MainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainViewController.m; sourceTree = "<group>"; };
+		7A23CF9C1C3A4E3900BD343A /* MineViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MineViewController.h; sourceTree = "<group>"; };
+		7A23CF9D1C3A4E3900BD343A /* MineViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MineViewController.m; sourceTree = "<group>"; };
+		7A23CFA51C3A507200BD343A /* MainStoryboard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = MainStoryboard.storyboard; sourceTree = "<group>"; };
+		7A23CFA71C3A509900BD343A /* DiscoverStoryboard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = DiscoverStoryboard.storyboard; sourceTree = "<group>"; };
+		7A23CFA91C3A50C900BD343A /* MineStoryboard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = MineStoryboard.storyboard; sourceTree = "<group>"; };
 		7ADE22961C3A1C3A0039245D /* The weekend to play.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "The weekend to play.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		7ADE229A1C3A1C3A0039245D /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		7ADE229C1C3A1C3A0039245D /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -21,6 +37,9 @@
 		7ADE229F1C3A1C3A0039245D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		7ADE22A21C3A1C3A0039245D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		7ADE22A41C3A1C3A0039245D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		ADFD9174E14D5337831C7338 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		B6863585B0F21C0ED030045B /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
+		C60D264A4D10AA8DC14E48D3 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -28,17 +47,169 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3548404F131E8E1CC511003E /* libPods.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		2F922790E962CBA343F032B8 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				C60D264A4D10AA8DC14E48D3 /* Pods.debug.xcconfig */,
+				B6863585B0F21C0ED030045B /* Pods.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		302D0E3B2F8E80E2B0D44072 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				ADFD9174E14D5337831C7338 /* libPods.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		7A23CF8D1C3A4E3900BD343A /* Classes */ = {
+			isa = PBXGroup;
+			children = (
+				7A23CF8E1C3A4E3900BD343A /* Discover */,
+				7A23CF941C3A4E3900BD343A /* Main */,
+				7A23CF9A1C3A4E3900BD343A /* Mine */,
+			);
+			name = Classes;
+			path = "The weekend to play/Classes";
+			sourceTree = "<group>";
+		};
+		7A23CF8E1C3A4E3900BD343A /* Discover */ = {
+			isa = PBXGroup;
+			children = (
+				7A23CF8F1C3A4E3900BD343A /* Controllers */,
+				7A23CF921C3A4E3900BD343A /* Models */,
+				7A23CF931C3A4E3900BD343A /* Views */,
+			);
+			path = Discover;
+			sourceTree = "<group>";
+		};
+		7A23CF8F1C3A4E3900BD343A /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				7A23CF901C3A4E3900BD343A /* DiscoverViewController.h */,
+				7A23CF911C3A4E3900BD343A /* DiscoverViewController.m */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		7A23CF921C3A4E3900BD343A /* Models */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		7A23CF931C3A4E3900BD343A /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				7A23CFA71C3A509900BD343A /* DiscoverStoryboard.storyboard */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		7A23CF941C3A4E3900BD343A /* Main */ = {
+			isa = PBXGroup;
+			children = (
+				7A23CF951C3A4E3900BD343A /* Controllers */,
+				7A23CF981C3A4E3900BD343A /* Models */,
+				7A23CF991C3A4E3900BD343A /* Views */,
+			);
+			path = Main;
+			sourceTree = "<group>";
+		};
+		7A23CF951C3A4E3900BD343A /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				7A23CF961C3A4E3900BD343A /* MainViewController.h */,
+				7A23CF971C3A4E3900BD343A /* MainViewController.m */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		7A23CF981C3A4E3900BD343A /* Models */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		7A23CF991C3A4E3900BD343A /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				7A23CFA51C3A507200BD343A /* MainStoryboard.storyboard */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		7A23CF9A1C3A4E3900BD343A /* Mine */ = {
+			isa = PBXGroup;
+			children = (
+				7A23CF9B1C3A4E3900BD343A /* Controllers */,
+				7A23CF9E1C3A4E3900BD343A /* Models */,
+				7A23CF9F1C3A4E3900BD343A /* Views */,
+			);
+			path = Mine;
+			sourceTree = "<group>";
+		};
+		7A23CF9B1C3A4E3900BD343A /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				7A23CF9C1C3A4E3900BD343A /* MineViewController.h */,
+				7A23CF9D1C3A4E3900BD343A /* MineViewController.m */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		7A23CF9E1C3A4E3900BD343A /* Models */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		7A23CF9F1C3A4E3900BD343A /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				7A23CFA91C3A50C900BD343A /* MineStoryboard.storyboard */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		7A23CFA01C3A4E3900BD343A /* Library */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Library;
+			path = "The weekend to play/Library";
+			sourceTree = "<group>";
+		};
+		7A23CFA41C3A4FAA00BD343A /* Resource */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Resource;
+			path = "The weekend to play/Resource";
+			sourceTree = "<group>";
+		};
 		7ADE228D1C3A1C3A0039245D = {
 			isa = PBXGroup;
 			children = (
+				7A23CF8D1C3A4E3900BD343A /* Classes */,
+				7A23CFA01C3A4E3900BD343A /* Library */,
+				7A23CFA41C3A4FAA00BD343A /* Resource */,
 				7ADE22981C3A1C3A0039245D /* The weekend to play */,
 				7ADE22971C3A1C3A0039245D /* Products */,
+				2F922790E962CBA343F032B8 /* Pods */,
+				302D0E3B2F8E80E2B0D44072 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -78,9 +249,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 7ADE22A71C3A1C3A0039245D /* Build configuration list for PBXNativeTarget "The weekend to play" */;
 			buildPhases = (
+				1E600409B38BFF3EFBC977AD /* Check Pods Manifest.lock */,
 				7ADE22921C3A1C3A0039245D /* Sources */,
 				7ADE22931C3A1C3A0039245D /* Frameworks */,
 				7ADE22941C3A1C3A0039245D /* Resources */,
+				5E7D44F900C3F07ACC1823CD /* Embed Pods Frameworks */,
+				228D1A6D7ABFF4770640318B /* Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -129,12 +303,63 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7A23CFA81C3A509900BD343A /* DiscoverStoryboard.storyboard in Resources */,
+				7A23CFA61C3A507200BD343A /* MainStoryboard.storyboard in Resources */,
 				7ADE22A01C3A1C3A0039245D /* Assets.xcassets in Resources */,
 				7ADE22A31C3A1C3A0039245D /* LaunchScreen.storyboard in Resources */,
+				7A23CFAA1C3A50C900BD343A /* MineStoryboard.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		1E600409B38BFF3EFBC977AD /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		228D1A6D7ABFF4770640318B /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods/Pods-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		5E7D44F900C3F07ACC1823CD /* Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods/Pods-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		7ADE22921C3A1C3A0039245D /* Sources */ = {
@@ -142,7 +367,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				7ADE229E1C3A1C3A0039245D /* AppDelegate.m in Sources */,
+				7A23CFA11C3A4E3900BD343A /* DiscoverViewController.m in Sources */,
+				7A23CFA31C3A4E3900BD343A /* MineViewController.m in Sources */,
 				7ADE229B1C3A1C3A0039245D /* main.m in Sources */,
+				7A23CFA21C3A4E3900BD343A /* MainViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -242,6 +470,7 @@
 		};
 		7ADE22A81C3A1C3A0039245D /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = C60D264A4D10AA8DC14E48D3 /* Pods.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = "The weekend to play/Info.plist";
@@ -253,6 +482,7 @@
 		};
 		7ADE22A91C3A1C3A0039245D /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = B6863585B0F21C0ED030045B /* Pods.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = "The weekend to play/Info.plist";
@@ -281,6 +511,7 @@
 				7ADE22A91C3A1C3A0039245D /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
