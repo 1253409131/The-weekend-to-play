@@ -10,7 +10,6 @@
 #import "MainTableViewCell.h"
 #import <AFNetworking/AFHTTPSessionManager.h>
 #import "MainModel.h"
-#import <SDWebImage/UIImageView+WebCache.h>
 @interface MainViewController ()<UITableViewDataSource,UITableViewDelegate>
 
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
@@ -20,8 +19,6 @@
 @property (nonatomic, strong) NSMutableArray *activityArray;
 //推荐专题数据
 @property (nonatomic, strong) NSMutableArray *themeArray;
-//广告
-@property (nonatomic, strong) NSMutableArray *adArray;
 @end
 
 @implementation MainViewController
@@ -129,51 +126,10 @@
 
 - (void)configTableViewHeaderView{
     UIView *tableViewHeaderView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, [UIScreen mainScreen].bounds.size.width, 343)];
-//    tableViewHeaderView.backgroundColor = [UIColor cyanColor];
+    tableViewHeaderView.backgroundColor = [UIColor cyanColor];
     
-    //添加轮播图
-    UIScrollView *carouselView = [[UIScrollView alloc] initWithFrame:CGRectMake(0, 0, [UIScreen mainScreen].bounds.size.width, 186)];
-    carouselView.contentSize = CGSizeMake(self.adArray.count * [UIScreen mainScreen].bounds.size.width, 186);
+    UIScrollView *carouselView = [[UIScrollView alloc] initWithFrame:CGRectMake(0, 0, [uisc], <#CGFloat height#>)]
     
-    for (int i = 0; i < self.adArray.count; i++) {
-        UIImageView *imageView = [[UIImageView alloc] initWithFrame:CGRectMake([UIScreen mainScreen].bounds.size.width * i, 0, [UIScreen mainScreen].bounds.size.width, 186)];
-        [imageView sd_setImageWithURL:[NSURL URLWithString:self.adArray[i]] placeholderImage:nil];
-        [carouselView addSubview:imageView];
-    }
-    
-
-    [tableViewHeaderView addSubview:carouselView];
-    
-    
-    //按钮
-    for (int i = 0; i < 4; i++) {
-        UIButton *btn = [UIButton buttonWithType:UIButtonTypeCustom];
-        btn.frame = CGRectMake(i * [UIScreen mainScreen].bounds.size.width / 4, 186, [UIScreen mainScreen].bounds.size.width / 4, [UIScreen mainScreen].bounds.size.width / 4);
-        NSString *imageStr = [NSString stringWithFormat:@"home_icon_%02d",i + 1];
-        [btn setImage:[UIImage imageNamed:imageStr] forState:UIControlStateNormal];
-        btn.tag = 100 + i;
-        [btn addTarget:self action:@selector(mainActivityButtonAction:) forControlEvents:UIControlEventTouchUpInside];
-        [tableViewHeaderView addSubview:btn];
-    }
-    
-    //精选活动&精选主题
-    
-    UIButton *activityBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-    activityBtn.frame = CGRectMake(0, 186 +[UIScreen mainScreen].bounds.size.width / 4, [UIScreen mainScreen].bounds.size.width / 2, 343 - 186 - [UIScreen mainScreen].bounds.size.width / 4);
-    
-    [activityBtn setImage:[UIImage imageNamed:@"home_huodong"] forState:UIControlStateNormal];
-    activityBtn.tag = 110;
-    [activityBtn addTarget:self action:@selector(mainActivityButtonAction:) forControlEvents:UIControlEventTouchUpInside];
-    [tableViewHeaderView addSubview:activityBtn];
-    
-    
-    UIButton *themeBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-    themeBtn.frame = CGRectMake([UIScreen mainScreen].bounds.size.width / 2, 186 +[UIScreen mainScreen].bounds.size.width / 4, [UIScreen mainScreen].bounds.size.width / 2, 343 - 186 - [UIScreen mainScreen].bounds.size.width / 4);
-    
-    [themeBtn setImage:[UIImage imageNamed:@"home_zhuanti"] forState:UIControlStateNormal];
-    themeBtn.tag = 111;
-    [themeBtn addTarget:self action:@selector(mainActivityButtonAction:) forControlEvents:UIControlEventTouchUpInside];
-    [tableViewHeaderView addSubview:themeBtn];
     
     
     
@@ -181,9 +137,7 @@
 }
 
 
-- (void)mainActivityButtonAction:(UIButton *)btn{
-    
-}
+
 
 //网络请求
 - (void)requestModel{
@@ -204,7 +158,6 @@
             NSArray *acDataArray = dic[@"acData"];
             for (NSDictionary *dict in acDataArray) {
                 MainModel *model = [[MainModel alloc] initWithDictionary:dict];
-                NSLog(@"model = %@",model);
                 [self.activityArray addObject:model];
             }
             [self.listArray addObject:self.activityArray];
@@ -221,12 +174,6 @@
             
             //广告
             NSArray *adDataArray = dic[@"adData"];
-            for (NSDictionary *dic in adDataArray) {
-                [self.adArray addObject:dic[@"url"]];
-            }
-            //拿到数据之后重新刷新
-            [self configTableViewHeaderView];
-            
             
             //以请求回来的城市作为导航栏按钮标题
             NSString *cityName = dic[@"cityname"];
@@ -240,9 +187,9 @@
         
         
         
-//        NSLog(@"success = %@",responseObject);
+        NSLog(@"success = %@",responseObject);
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
-//        NSLog(@"error = %@",error);
+        NSLog(@"error = %@",error);
     }];
 }
 
@@ -268,17 +215,6 @@
     }
     return _themeArray;
 }
-
-- (NSMutableArray *)adArray{
-    if (_adArray == nil) {
-        self.adArray = [NSMutableArray new];
-    }
-    return _adArray;
-}
-
-
-
-
 
 
 - (void)didReceiveMemoryWarning {

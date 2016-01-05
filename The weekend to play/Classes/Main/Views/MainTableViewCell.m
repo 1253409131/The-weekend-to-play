@@ -20,6 +20,7 @@
 
 
 
+
 @end
 
 @implementation MainTableViewCell
@@ -27,7 +28,9 @@
 - (void)setMainModel:(MainModel *)mainModel{
     [self.activityImageView sd_setImageWithURL:[NSURL URLWithString:mainModel.image_big] placeholderImage:nil];
     self.activityNameLable.text = mainModel.title;
+    NSLog(@"mainModel.title = %@",mainModel.title);
     self.activityPriceLable.text = mainModel.price;
+    NSLog(@"mainModel.price = %@",mainModel.price);
 
 }
 
