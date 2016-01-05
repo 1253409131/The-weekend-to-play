@@ -37,8 +37,8 @@
             </tableViewCellContentView>
             <connections>
                 <outlet property="activityDistanceBtn" destination="nOc-zF-47n" id="foS-ca-MK1"/>
-                <outlet property="activityImageView" destination="AYQ-pq-Itn" id="8NY-QR-tWp"/>
-                <outlet property="activityNameLable" destination="AYQ-pq-Itn" id="vM4-PR-25r"/>
+                <outlet property="activityImageView" destination="AYQ-pq-Itn" id="RCn-7i-vT6"/>
+                <outlet property="activityNameLable" destination="RLj-yu-Bgq" id="xpL-Jf-tmm"/>
                 <outlet property="activityPriceLable" destination="w53-sp-2lc" id="AqP-bL-j7F"/>
             </connections>
             <point key="canvasLocation" x="596.5" y="475.5"/>
