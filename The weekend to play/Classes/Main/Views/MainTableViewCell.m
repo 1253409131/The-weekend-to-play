@@ -31,6 +31,20 @@
     NSLog(@"mainModel.title = %@",mainModel.title);
     self.activityPriceLable.text = mainModel.price;
     NSLog(@"mainModel.price = %@",mainModel.price);
+    
+    if ([mainModel.type intValue]== 0) {
+        self.activityPriceLable.hidden = YES;
+        self.activityDistanceBtn.hidden  = YES;
+        self.activityNameLable.hidden  = YES;
+        
+        
+    }else{
+        self.activityPriceLable.hidden = NO;
+        self.activityDistanceBtn.hidden  = NO;
+        self.activityNameLable.hidden  = NO;
+    }
+    
+    
 
 }
 

@@ -11,6 +11,16 @@
 #import <AFNetworking/AFHTTPSessionManager.h>
 #import "MainModel.h"
 #import <SDWebImage/UIImageView+WebCache.h>
+
+
+#import "SelectCityViewController.h"
+#import "SearchViewController.h"
+#import "ActivityViewController.h"
+#import "ThemeViewController.h"
+#import "ClassListViewController.h"
+#import "JingXuanViewController.h"
+#import "HotActivityViewController.h"
+
 @interface MainViewController ()<UITableViewDataSource,UITableViewDelegate>
 
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
@@ -18,10 +28,13 @@
 @property (nonatomic, strong) NSMutableArray *listArray;
 //推荐活动数据
 @property (nonatomic, strong) NSMutableArray *activityArray;
+@property (nonatomic, strong) UIScrollView *carouselView;
 //推荐专题数据
 @property (nonatomic, strong) NSMutableArray *themeArray;
 //广告
 @property (nonatomic, strong) NSMutableArray *adArray;
+@property(nonatomic, retain) UIPageControl *pageControl;
+@property(nonatomic, retain) NSTimer *timer;
 @end
 
 @implementation MainViewController
@@ -66,9 +79,9 @@
 //每一个分区有多少行
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
     if (section == 0) {
-        return self.activityArray.count;
+        return self.activityArray.count;//活动
     }
-    return self.themeArray.count;
+    return self.themeArray.count;//专题
 }
 //重用机制
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
@@ -114,35 +127,65 @@
     return view;
 }
 
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    if (indexPath.row == 0) {
+        ActivityViewController *activityVC = [[ActivityViewController alloc] init];
+        [self.navigationController pushViewController:activityVC animated:YES];
+    }else{
+        ThemeViewController *themeVC = [[ThemeViewController alloc] init];
+        [self.navigationController pushViewController:themeVC animated:YES];
+    }
+    
+}
+
 
 
 #pragma mark --------Custom Method
 //选择城市
 - (void)selectcCityAction:(UIButton *)btn{
-    
+    SelectCityViewController *selectVC = [[SelectCityViewController alloc] init];
+    [self presentViewController:selectVC animated:YES completion:nil];
 }
 
 //搜索关键字
 - (void)searchActivity:(UIButton *)btn{
-    
+    SearchViewController *searchVC = [[SearchViewController alloc] init];
+    [self.navigationController pushViewController:searchVC animated:YES];
 }
 
+
+#pragma mark --------- configTableViewHeaderView
 - (void)configTableViewHeaderView{
     UIView *tableViewHeaderView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, [UIScreen mainScreen].bounds.size.width, 343)];
 //    tableViewHeaderView.backgroundColor = [UIColor cyanColor];
     
     //添加轮播图
-    UIScrollView *carouselView = [[UIScrollView alloc] initWithFrame:CGRectMake(0, 0, [UIScreen mainScreen].bounds.size.width, 186)];
-    carouselView.contentSize = CGSizeMake(self.adArray.count * [UIScreen mainScreen].bounds.size.width, 186);
+    self.carouselView = [[UIScrollView alloc] initWithFrame:CGRectMake(0, 0, [UIScreen mainScreen].bounds.size.width, 186)];
+    self.carouselView.delegate = self;
+    //整屏滑动
+    self.carouselView.pagingEnabled = YES;
+    //不要水平滚动条
+    self.carouselView.showsHorizontalScrollIndicator = NO;
+    self.carouselView.contentSize = CGSizeMake(self.adArray.count * [UIScreen mainScreen].bounds.size.width, 186);
     
     for (int i = 0; i < self.adArray.count; i++) {
         UIImageView *imageView = [[UIImageView alloc] initWithFrame:CGRectMake([UIScreen mainScreen].bounds.size.width * i, 0, [UIScreen mainScreen].bounds.size.width, 186)];
         [imageView sd_setImageWithURL:[NSURL URLWithString:self.adArray[i]] placeholderImage:nil];
-        [carouselView addSubview:imageView];
+        [self.carouselView addSubview:imageView];
     }
+    [tableViewHeaderView addSubview:self.carouselView];
     
-
-    [tableViewHeaderView addSubview:carouselView];
+    //创建一个pageControl
+    self.pageControl = [[UIPageControl alloc] initWithFrame:CGRectMake(100 , 186-30, kWidth - 200, 30)];
+    
+    
+    self.pageControl.numberOfPages= self.adArray.count;
+    [self.pageControl  addTarget:self action:@selector(pageControlAction:) forControlEvents:UIControlEventValueChanged];
+    self.pageControl.currentPageIndicatorTintColor = [UIColor cyanColor];
+    
+    
+    [tableViewHeaderView addSubview:self.pageControl ];
+    
     
     
     //按钮
@@ -155,7 +198,9 @@
         [btn addTarget:self action:@selector(mainActivityButtonAction:) forControlEvents:UIControlEventTouchUpInside];
         [tableViewHeaderView addSubview:btn];
     }
+ 
     
+#pragma mark --------- 精选活动，热门活动
     //精选活动&精选主题
     
     UIButton *activityBtn = [UIButton buttonWithType:UIButtonTypeCustom];
@@ -163,7 +208,7 @@
     
     [activityBtn setImage:[UIImage imageNamed:@"home_huodong"] forState:UIControlStateNormal];
     activityBtn.tag = 110;
-    [activityBtn addTarget:self action:@selector(mainActivityButtonAction:) forControlEvents:UIControlEventTouchUpInside];
+    [activityBtn addTarget:self action:@selector(mainJingXuanActivityButtonAction) forControlEvents:UIControlEventTouchUpInside];
     [tableViewHeaderView addSubview:activityBtn];
     
     
@@ -172,7 +217,7 @@
     
     [themeBtn setImage:[UIImage imageNamed:@"home_zhuanti"] forState:UIControlStateNormal];
     themeBtn.tag = 111;
-    [themeBtn addTarget:self action:@selector(mainActivityButtonAction:) forControlEvents:UIControlEventTouchUpInside];
+    [themeBtn addTarget:self action:@selector(mainHotActivityButtonAction) forControlEvents:UIControlEventTouchUpInside];
     [tableViewHeaderView addSubview:themeBtn];
     
     
@@ -180,10 +225,53 @@
     self.tableView.tableHeaderView = tableViewHeaderView;
 }
 
+#pragma mark --------- 轮播图方法
 
-- (void)mainActivityButtonAction:(UIButton *)btn{
+
+- (void)pageControlAction:(UIPageControl *)pageControl{
+    //第一步：获取pageControl在第几页
+    NSInteger pageNum = pageControl.currentPage;
+    //第二步获取当前页宽度
+    CGFloat pageWidth  = self.carouselView.frame.size.width;
+    //到达页
+    self.carouselView.contentOffset = CGPointMake(pageNum * pageWidth, 0);
+    
     
 }
+
+- (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView{
+    //第一步：获取scrollView页面的宽度
+    CGFloat pageWidth = self.carouselView.frame.size.width;
+    //第二步：获取scrollView停止时候的偏移量
+    
+    CGPoint offset = self.carouselView.contentOffset;
+    //第三步：通过偏移量和页面宽度计算出来当前页面
+    NSInteger pageNum = offset.x / pageWidth;
+    self.pageControl.currentPage = pageNum;
+    
+    
+}
+//热门专题
+- (void)mainHotActivityButtonAction{
+    HotActivityViewController *hotVC = [[HotActivityViewController alloc] init];
+    [self.navigationController pushViewController:hotVC animated:YES];
+}
+//精选活动
+- (void)mainJingXuanActivityButtonAction{
+    JingXuanViewController *jingxuanVC = [[JingXuanViewController alloc] init];
+    [self.navigationController pushViewController:jingxuanVC animated:YES];
+    
+    
+}
+#pragma mark --------- 四个按钮
+//四个按钮
+- (void)mainActivityButtonAction:(UIButton *)btn{
+    ClassListViewController *classListVC = [[ClassListViewController alloc] init];
+    [self.navigationController pushViewController:classListVC animated:YES];
+    
+}
+
+
 
 //网络请求
 - (void)requestModel{

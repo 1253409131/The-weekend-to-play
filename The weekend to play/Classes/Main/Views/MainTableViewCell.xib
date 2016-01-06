@@ -29,9 +29,12 @@
                         <color key="textColor" red="1" green="0.32851412790000001" blue="0.2832480081" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nOc-zF-47n">
-                        <rect key="frame" x="192" y="171" width="183" height="30"/>
-                        <state key="normal" title="1221.0kg"/>
+                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nOc-zF-47n">
+                        <rect key="frame" x="242" y="176" width="83" height="22"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                        <state key="normal" title="1221.0kg" image="pos">
+                            <color key="titleColor" cocoaTouchSystemColor="scrollViewTexturedBackgroundColor"/>
+                        </state>
                     </button>
                 </subviews>
             </tableViewCellContentView>
@@ -44,4 +47,7 @@
             <point key="canvasLocation" x="596.5" y="475.5"/>
         </tableViewCell>
     </objects>
+    <resources>
+        <image name="pos" width="12" height="15"/>
+    </resources>
 </document>
