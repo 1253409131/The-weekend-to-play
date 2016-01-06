@@ -17,6 +17,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    self.title = @"分类列表";
     self.view.backgroundColor = [UIColor colorWithRed:92/255.0 green:159/255.0 blue:107/255.0 alpha:1.0];
 }
 
