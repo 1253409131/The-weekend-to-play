@@ -23,7 +23,7 @@
 		7A69F2AB1C3CC89C002ECFCB /* ClassListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A69F2AA1C3CC89C002ECFCB /* ClassListViewController.m */; };
 		7A69F2AE1C3CC8B4002ECFCB /* JingXuanViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A69F2AD1C3CC8B4002ECFCB /* JingXuanViewController.m */; };
 		7A69F2B11C3CC8D0002ECFCB /* HotActivityViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A69F2B01C3CC8D0002ECFCB /* HotActivityViewController.m */; };
-		7A8933631C3D19FD00B43477 /* File in Resources */ = {isa = PBXBuildFile; fileRef = 7A8933621C3D19FD00B43477 /* File */; };
+		7A73CAAC1C3E10EB00345636 /* ActivityDetailView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A73CAAB1C3E10EB00345636 /* ActivityDetailView.m */; };
 		7A8933661C3D202C00B43477 /* UIViewController+Common.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A8933651C3D202C00B43477 /* UIViewController+Common.m */; };
 		7AC6BF121C3BA08600F19997 /* MainModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 7AC6BF111C3BA08600F19997 /* MainModel.m */; };
 		7ADE229B1C3A1C3A0039245D /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 7ADE229A1C3A1C3A0039245D /* main.m */; };
@@ -60,8 +60,9 @@
 		7A69F2AD1C3CC8B4002ECFCB /* JingXuanViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JingXuanViewController.m; sourceTree = "<group>"; };
 		7A69F2AF1C3CC8D0002ECFCB /* HotActivityViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HotActivityViewController.h; sourceTree = "<group>"; };
 		7A69F2B01C3CC8D0002ECFCB /* HotActivityViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HotActivityViewController.m; sourceTree = "<group>"; };
+		7A73CAAA1C3E10EB00345636 /* ActivityDetailView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ActivityDetailView.h; sourceTree = "<group>"; };
+		7A73CAAB1C3E10EB00345636 /* ActivityDetailView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ActivityDetailView.m; sourceTree = "<group>"; };
 		7A8933611C3D187E00B43477 /* Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Header.h; sourceTree = "<group>"; };
-		7A8933621C3D19FD00B43477 /* File */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = File; sourceTree = "<group>"; };
 		7A8933641C3D202C00B43477 /* UIViewController+Common.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+Common.h"; sourceTree = "<group>"; };
 		7A8933651C3D202C00B43477 /* UIViewController+Common.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+Common.m"; sourceTree = "<group>"; };
 		7AC6BF101C3BA08600F19997 /* MainModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainModel.h; sourceTree = "<group>"; };
@@ -200,6 +201,8 @@
 			isa = PBXGroup;
 			children = (
 				7A23CFA51C3A507200BD343A /* MainStoryboard.storyboard */,
+				7A73CAAA1C3E10EB00345636 /* ActivityDetailView.h */,
+				7A73CAAB1C3E10EB00345636 /* ActivityDetailView.m */,
 				7A23CFE81C3A766E00BD343A /* MainTableViewCell.h */,
 				7A23CFE91C3A766E00BD343A /* MainTableViewCell.m */,
 				7A23CFEA1C3A766E00BD343A /* MainTableViewCell.xib */,
@@ -262,7 +265,6 @@
 			children = (
 				7A69F29C1C3CC511002ECFCB /* PrefixHeader.pch */,
 				7A8933611C3D187E00B43477 /* Header.h */,
-				7A8933621C3D19FD00B43477 /* File */,
 			);
 			name = Pch;
 			path = "The weekend to play/Pch";
@@ -374,7 +376,6 @@
 			files = (
 				7A23CFEC1C3A766E00BD343A /* MainTableViewCell.xib in Resources */,
 				7A23CFA81C3A509900BD343A /* DiscoverStoryboard.storyboard in Resources */,
-				7A8933631C3D19FD00B43477 /* File in Resources */,
 				7A23CFA61C3A507200BD343A /* MainStoryboard.storyboard in Resources */,
 				7ADE22A01C3A1C3A0039245D /* Assets.xcassets in Resources */,
 				7ADE22A31C3A1C3A0039245D /* LaunchScreen.storyboard in Resources */,
@@ -447,6 +448,7 @@
 				7ADE229B1C3A1C3A0039245D /* main.m in Sources */,
 				7A69F2A81C3CC87D002ECFCB /* ThemeViewController.m in Sources */,
 				7A69F2AE1C3CC8B4002ECFCB /* JingXuanViewController.m in Sources */,
+				7A73CAAC1C3E10EB00345636 /* ActivityDetailView.m in Sources */,
 				7A69F29F1C3CC83D002ECFCB /* SelectCityViewController.m in Sources */,
 				7A23CFA21C3A4E3900BD343A /* MainViewController.m in Sources */,
 				7AC6BF121C3BA08600F19997 /* MainModel.m in Sources */,

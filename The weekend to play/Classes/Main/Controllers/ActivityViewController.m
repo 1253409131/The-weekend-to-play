@@ -10,7 +10,10 @@
 //#import <AFNetworking/AFHTTPSessionManager.h>
 #import "AFHTTPSessionManager.h"
 #import <MBProgressHUD.h>
+#import "ActivityDetailView.h"
 @interface ActivityViewController ()
+
+@property (strong, nonatomic) IBOutlet ActivityDetailView *activityDetailView;
 
 @end
 
@@ -20,9 +23,11 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     self.title = @"活动详情";
-    self.view.backgroundColor = [UIColor yellowColor];
+//    self.view.backgroundColor = [UIColor yellowColor];
     
     [self showBackButton];
+    
+    
 
     [self getModel];
     
@@ -33,15 +38,27 @@
 - (void)getModel{
     AFHTTPSessionManager *sessionManager = [AFHTTPSessionManager manager];
     sessionManager.responseSerializer.acceptableContentTypes = [NSSet setWithObjects:@"text/html", nil];
-//    [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+    [MBProgressHUD showHUDAddedTo:self.view animated:YES];
     [sessionManager GET:[NSString stringWithFormat:@"%@&id=%@",kActivityDetail,self.activityId] parameters:nil progress:^(NSProgress * _Nonnull downloadProgress) {
 //        [MBProgressHUD hideHUDForView:self.view animated:YES];
         QJZLog(@"downloadProgress = %@",downloadProgress);
     } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
-//        [MBProgressHUD hideHUDForView:self.view animated:YES];
+        [MBProgressHUD hideHUDForView:self.view animated:YES];
         QJZLog(@"responseObject = %@",responseObject);
+        
+        NSDictionary *dic = responseObject;
+        NSString *status = dic[@"status"];
+        NSInteger code = [dic[@"code"] integerValue];
+        if ([status isEqualToString:@"success"] && code == 0) {
+            NSDictionary *successDic = dic[@"success"];
+            self.activityDetailView.dataDic = successDic;
+        }else{
+            
+        }
+        
+        
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
-//        [MBProgressHUD hideHUDForView:self.view animated:YES];
+        [MBProgressHUD hideHUDForView:self.view animated:YES];
         QJZLog(@"error = %@",error);
     }];
 }

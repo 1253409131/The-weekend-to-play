@@ -261,7 +261,10 @@
     //从数组中的字典里取出type类型
     NSString *type = self.adArray[adButton.tag - 100][@"type"];
     if ([type integerValue] == 1) {
-        ActivityViewController *activityVC = [[ActivityViewController alloc] init];
+        
+        UIStoryboard *mainStoryBoard = [UIStoryboard storyboardWithName:@"MainStoryboard" bundle:nil];
+        
+        ActivityViewController *activityVC = [mainStoryBoard instantiateViewControllerWithIdentifier:@"ActivityDetilVC"];
         //活动id
         activityVC.activityId = self.adArray[adButton.tag - 100][@"id"];
         
