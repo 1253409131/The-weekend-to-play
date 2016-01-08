@@ -49,9 +49,9 @@ CGFloat _lastLabelBottom;
     self.activityTimeLable.text = [NSString stringWithFormat:@"正在进行:%@-%@", startTime, endTime];
     
     //喜欢人数
-    self.activityFavouriteLable.text = [NSString stringWithFormat:@"%@喜欢的人数", dataDic[@"fav"]];
+    self.activityFavouriteLable.text = [NSString stringWithFormat:@"%@人已收藏", dataDic[@"fav"]];
     //活动价格
-    self.activityPriceLable.text = dataDic[@"pricedesc"];
+    self.activityPriceLable.text = [NSString stringWithFormat:@"价格参考: %@",dataDic[@"pricedesc"]];
     //活动地点
     self.activityAdress.text = dataDic[@"address"];
     //活动手机号
