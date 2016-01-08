@@ -1,25 +1,74 @@
 //
 //  ThemeViewController.m
 //  The weekend to play
-//
+//  活动专题
 //  Created by scjy on 16/1/6.
 //  Copyright © 2016年 秦俊珍. All rights reserved.
 //
 
 #import "ThemeViewController.h"
-
+#import <AFNetworking/AFHTTPSessionManager.h>
+#import "ActivityThemeView.h"
 @interface ThemeViewController ()
+
+@property (nonatomic, strong) ActivityThemeView *themeView;
 
 @end
 
 @implementation ThemeViewController
 
+- (void)loadView{
+    [super loadView];
+    self.themeView = [[ActivityThemeView alloc] initWithFrame:self.view.frame];
+    self.view = self.themeView;
+    [self getModel];
+}
+
+
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    self.view.backgroundColor = [UIColor magentaColor];
+    
+    [self showBackButton];
+    
+    
+    
     
 }
+#pragma mark --------- Cus
+- (void)getModel{
+    AFHTTPSessionManager *sessionManager = [AFHTTPSessionManager manager];
+    sessionManager.responseSerializer.acceptableContentTypes = [NSSet setWithObject:@"text/html"];
+    [sessionManager GET:[NSString stringWithFormat:@"%@&id=%@",kActivityDetail,self.themeid] parameters:nil progress:^(NSProgress * _Nonnull downloadProgress) {
+        QJZLog(@"downloadProgress = %@",downloadProgress);
+        
+    } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+        QJZLog(@"responseObject = %@",responseObject);
+        NSDictionary *dic = responseObject;
+        NSString *status = dic[@"status"];
+        NSInteger code = [dic[@"code"] integerValue];
+        if ([status isEqualToString:@"success"] && code == 0) {
+            self.themeView.dataDic = dic[@"success"];
+            //导航栏标题
+            self.navigationItem.title = dic[@"success"][@"title"];
+        }else{
+            
+        }
+        
+        
+    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        
+        QJZLog(@"error = %@",error);
+    }];
+}
+
+
+
+
+
+
+
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

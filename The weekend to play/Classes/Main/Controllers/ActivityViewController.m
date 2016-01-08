@@ -22,8 +22,10 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    
+    
     self.title = @"活动详情";
-//    self.view.backgroundColor = [UIColor yellowColor];
+    //在活动详情页面隐藏tabBar
     
     [self showBackButton];
     
@@ -41,10 +43,10 @@
     [MBProgressHUD showHUDAddedTo:self.view animated:YES];
     [sessionManager GET:[NSString stringWithFormat:@"%@&id=%@",kActivityDetail,self.activityId] parameters:nil progress:^(NSProgress * _Nonnull downloadProgress) {
 //        [MBProgressHUD hideHUDForView:self.view animated:YES];
-        QJZLog(@"downloadProgress = %@",downloadProgress);
+//        QJZLog(@"downloadProgress = %@",downloadProgress);
     } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
         [MBProgressHUD hideHUDForView:self.view animated:YES];
-        QJZLog(@"responseObject = %@",responseObject);
+//        QJZLog(@"responseObject = %@",responseObject);
         
         NSDictionary *dic = responseObject;
         NSString *status = dic[@"status"];
@@ -59,7 +61,7 @@
         
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
         [MBProgressHUD hideHUDForView:self.view animated:YES];
-        QJZLog(@"error = %@",error);
+//        QJZLog(@"error = %@",error);
     }];
 }
 

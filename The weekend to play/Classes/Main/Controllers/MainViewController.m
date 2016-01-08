@@ -63,6 +63,14 @@
     self.navigationItem.rightBarButtonItem = rightBarBtn;
 }
 
+//隐藏tabBar
+- (void)viewWillAppear:(BOOL)animated{
+    self.tabBarController.tabBar.hidden = NO;
+}
+
+
+
+
 #pragma mark --------- UITableViewDataSouce
 //每一个分区有多少行
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
@@ -107,21 +115,19 @@
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    //活动id
+    MainModel *mainModel = self.listArray[indexPath.section][indexPath.row];
     if (indexPath.section == 0) {
         UIStoryboard *mainStroyBoard = [UIStoryboard storyboardWithName:@"MainStoryboard" bundle:nil];
         ActivityViewController *activityVC = [mainStroyBoard instantiateViewControllerWithIdentifier:@"ActivityDetilVC"];
         
-        //活动id
-        MainModel *mainModel = self.listArray[indexPath.section][indexPath.row];
+       
         activityVC.activityId = mainModel.activityId;
-        
         [self.navigationController pushViewController:activityVC animated:YES];
-        
-        
-        
         
     }else{
         ThemeViewController *themeVC = [[ThemeViewController alloc] init];
+        themeVC.themeid = mainModel.activityId;
         [self.navigationController pushViewController:themeVC animated:YES];
     }
     
@@ -280,15 +286,13 @@
         ActivityViewController *activityVC = [mainStoryBoard instantiateViewControllerWithIdentifier:@"ActivityDetilVC"];
         //活动id
         activityVC.activityId = self.adArray[adButton.tag - 100][@"id"];
-        
         [self.navigationController pushViewController:activityVC animated:YES];
-        
-        
-        
-        
     }else{
-        HotActivityViewController *hotVC = [[HotActivityViewController alloc] init];
-        [self.navigationController pushViewController:hotVC animated:YES];
+        ThemeViewController *themeVC = [[ThemeViewController alloc] init];
+        
+        themeVC.themeid = self.adArray[adButton.tag - 100][@"id"];
+        
+        [self.navigationController pushViewController:themeVC animated:YES];
     }
     
 }
@@ -319,11 +323,14 @@
 //    self.pageControl.currentPage = page;
     //方法2.
     //把page当前页+1
-    NSInteger rollPage = (self.pageControl.currentPage + 1) % self.adArray.count;
-    self.pageControl.currentPage = rollPage;
-    //计算scrollView应该滚动的x轴坐标
-    CGFloat offsetX = self.pageControl.currentPage * kWidth;
-    [self.carouselView setContentOffset:CGPointMake(offsetX, 0) animated:YES];
+    //self.adArray.count数组元素个数可能为0，当对0取余没有意义
+    if (self.adArray.count > 0) {
+        NSInteger rollPage = (self.pageControl.currentPage + 1) % self.adArray.count;
+        self.pageControl.currentPage = rollPage;
+        //计算scrollView应该滚动的x轴坐标
+        CGFloat offsetX = self.pageControl.currentPage * kWidth;
+        [self.carouselView setContentOffset:CGPointMake(offsetX, 0) animated:YES];
+    }
 }
 //当动手去滑动scrollView的时候，定时器依然在计算时间，可能我们刚刚滑动到下一页，定时器时间刚好促发，导致在当前页面停留的时间不够2秒。
 //解决方案在scrollView开始移动的时候结束定时器
