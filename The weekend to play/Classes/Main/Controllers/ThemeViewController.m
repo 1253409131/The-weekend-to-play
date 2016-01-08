@@ -10,13 +10,9 @@
 #import <AFNetworking/AFHTTPSessionManager.h>
 #import "ActivityThemeView.h"
 @interface ThemeViewController ()
-
 @property (nonatomic, strong) ActivityThemeView *themeView;
-
 @end
-
 @implementation ThemeViewController
-
 - (void)loadView{
     [super loadView];
     self.themeView = [[ActivityThemeView alloc] initWithFrame:self.view.frame];
@@ -24,23 +20,16 @@
     [self getModel];
 }
 
-
-
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    
     [self showBackButton];
-    
-    
-    
-    
 }
 #pragma mark --------- Cus
 - (void)getModel{
     AFHTTPSessionManager *sessionManager = [AFHTTPSessionManager manager];
     sessionManager.responseSerializer.acceptableContentTypes = [NSSet setWithObject:@"text/html"];
-    [sessionManager GET:[NSString stringWithFormat:@"%@&id=%@",kActivityDetail,self.themeid] parameters:nil progress:^(NSProgress * _Nonnull downloadProgress) {
+    [sessionManager GET:[NSString stringWithFormat:@"%@&id=%@", kActivityTheme,self.themeid] parameters:nil progress:^(NSProgress * _Nonnull downloadProgress) {
         QJZLog(@"downloadProgress = %@",downloadProgress);
         
     } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
@@ -55,21 +44,12 @@
         }else{
             
         }
-        
-        
+
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
         
         QJZLog(@"error = %@",error);
     }];
 }
-
-
-
-
-
-
-
-
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.

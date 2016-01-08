@@ -20,6 +20,7 @@
 #import "JingXuanViewController.h"
 #import "HotActivityViewController.h"
 
+
 @interface MainViewController ()<UITableViewDataSource,UITableViewDelegate>
 
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
@@ -42,6 +43,10 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    
+    
+  
+
     self.automaticallyAdjustsScrollViewInsets = NO;
 //    //导航栏颜色
 //    self.navigationController.navigationBar.barTintColor = [UIColor colorWithRed:96.0/255.0 green:185.0/255.0 blue:191.0/255.0 alpha:1.0];
@@ -65,6 +70,7 @@
 
 //隐藏tabBar
 - (void)viewWillAppear:(BOOL)animated{
+    [super viewWillAppear:animated];
     self.tabBarController.tabBar.hidden = NO;
 }
 
@@ -82,15 +88,12 @@
 //重用机制
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     MainTableViewCell *mainCell = [tableView dequeueReusableCellWithIdentifier:@"cell" forIndexPath:indexPath];
-    
     NSMutableArray *array = self.listArray[indexPath.section];
     mainCell.mainModel = array[indexPath.row];
-    
     return mainCell;
 }
 
 #pragma mark ---------- UITableViewDelegate
-
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
     return self.listArray.count;
 }

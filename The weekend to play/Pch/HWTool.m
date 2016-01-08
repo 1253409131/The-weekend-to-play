@@ -9,6 +9,7 @@
 #import "HWTool.h"
 
 @implementation HWTool
+//根据指定时间戳返回字符串类型时间
 + (NSString *)getDateFromString:(NSString *)timestamp{
     
     NSTimeInterval timeInterval = [timestamp doubleValue];
@@ -19,6 +20,20 @@
     return timeStr;
     
 }
+
+//获取系统当前时间
++ (NSDate *)getSystemNowDate{
+    //创建一个NSDataFormatter显示刷新时间
+    NSDateFormatter *df = [[NSDateFormatter alloc] init ];
+    df.dateFormat = @"yyyy-MM-dd HH:mm";
+    NSString *dateStr = [df stringFromDate:[NSDate date]];
+    NSDate *date = [df dateFromString:dateStr];
+    return date;
+}
+
+
+
+
 
 + (CGFloat)getTextHeightWithBigest:(NSString *)text bigerSize:(CGSize)bigSize textFont:(CGFloat)font{
     CGRect textRect = [text boundingRectWithSize:bigSize options:NSStringDrawingUsesLineFragmentOrigin attributes:@{NSFontAttributeName:[UIFont systemFontOfSize:font]} context:nil];

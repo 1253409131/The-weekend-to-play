@@ -26,7 +26,7 @@
     
     self.title = @"活动详情";
     //在活动详情页面隐藏tabBar
-    
+    self.tabBarController.tabBar.hidden = YES;
     [self showBackButton];
     
     
