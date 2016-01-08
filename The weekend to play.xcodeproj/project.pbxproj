@@ -16,6 +16,8 @@
 		7A23CFAA1C3A50C900BD343A /* MineStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7A23CFA91C3A50C900BD343A /* MineStoryboard.storyboard */; };
 		7A23CFEB1C3A766E00BD343A /* MainTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A23CFE91C3A766E00BD343A /* MainTableViewCell.m */; };
 		7A23CFEC1C3A766E00BD343A /* MainTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7A23CFEA1C3A766E00BD343A /* MainTableViewCell.xib */; };
+		7A47BDF81C3F3DDF00D22785 /* HWTool.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A47BDF71C3F3DDF00D22785 /* HWTool.m */; };
+		7A47BDFB1C3F3F8500D22785 /* UIView+Extension.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A47BDFA1C3F3F8500D22785 /* UIView+Extension.m */; };
 		7A69F29F1C3CC83D002ECFCB /* SelectCityViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A69F29E1C3CC83D002ECFCB /* SelectCityViewController.m */; };
 		7A69F2A21C3CC852002ECFCB /* SearchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A69F2A11C3CC852002ECFCB /* SearchViewController.m */; };
 		7A69F2A51C3CC86D002ECFCB /* ActivityViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A69F2A41C3CC86D002ECFCB /* ActivityViewController.m */; };
@@ -45,6 +47,10 @@
 		7A23CFE81C3A766E00BD343A /* MainTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainTableViewCell.h; sourceTree = "<group>"; };
 		7A23CFE91C3A766E00BD343A /* MainTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainTableViewCell.m; sourceTree = "<group>"; };
 		7A23CFEA1C3A766E00BD343A /* MainTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MainTableViewCell.xib; sourceTree = "<group>"; };
+		7A47BDF61C3F3DDF00D22785 /* HWTool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HWTool.h; sourceTree = "<group>"; };
+		7A47BDF71C3F3DDF00D22785 /* HWTool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HWTool.m; sourceTree = "<group>"; };
+		7A47BDF91C3F3F8500D22785 /* UIView+Extension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+Extension.h"; sourceTree = "<group>"; };
+		7A47BDFA1C3F3F8500D22785 /* UIView+Extension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+Extension.m"; sourceTree = "<group>"; };
 		7A69F29C1C3CC511002ECFCB /* PrefixHeader.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PrefixHeader.pch; sourceTree = "<group>"; };
 		7A69F29D1C3CC83D002ECFCB /* SelectCityViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SelectCityViewController.h; sourceTree = "<group>"; };
 		7A69F29E1C3CC83D002ECFCB /* SelectCityViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SelectCityViewController.m; sourceTree = "<group>"; };
@@ -265,6 +271,10 @@
 			children = (
 				7A69F29C1C3CC511002ECFCB /* PrefixHeader.pch */,
 				7A8933611C3D187E00B43477 /* Header.h */,
+				7A47BDF61C3F3DDF00D22785 /* HWTool.h */,
+				7A47BDF71C3F3DDF00D22785 /* HWTool.m */,
+				7A47BDF91C3F3F8500D22785 /* UIView+Extension.h */,
+				7A47BDFA1C3F3F8500D22785 /* UIView+Extension.m */,
 			);
 			name = Pch;
 			path = "The weekend to play/Pch";
@@ -438,6 +448,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7A47BDFB1C3F3F8500D22785 /* UIView+Extension.m in Sources */,
 				7A23CFEB1C3A766E00BD343A /* MainTableViewCell.m in Sources */,
 				7A69F2B11C3CC8D0002ECFCB /* HotActivityViewController.m in Sources */,
 				7ADE229E1C3A1C3A0039245D /* AppDelegate.m in Sources */,
@@ -448,6 +459,7 @@
 				7ADE229B1C3A1C3A0039245D /* main.m in Sources */,
 				7A69F2A81C3CC87D002ECFCB /* ThemeViewController.m in Sources */,
 				7A69F2AE1C3CC8B4002ECFCB /* JingXuanViewController.m in Sources */,
+				7A47BDF81C3F3DDF00D22785 /* HWTool.m in Sources */,
 				7A73CAAC1C3E10EB00345636 /* ActivityDetailView.m in Sources */,
 				7A69F29F1C3CC83D002ECFCB /* SelectCityViewController.m in Sources */,
 				7A23CFA21C3A4E3900BD343A /* MainViewController.m in Sources */,

@@ -11,6 +11,7 @@
 #import "MainModel.h"
 #import <SDWebImage/UIImageView+WebCache.h>
 
+#import "PrefixHeader.pch"
 #import "SelectCityViewController.h"
 #import "SearchViewController.h"
 #import "ActivityViewController.h"
@@ -107,13 +108,25 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     if (indexPath.section == 0) {
-        ActivityViewController *activityVC = [[ActivityViewController alloc] init];
+        UIStoryboard *mainStroyBoard = [UIStoryboard storyboardWithName:@"MainStoryboard" bundle:nil];
+        ActivityViewController *activityVC = [mainStroyBoard instantiateViewControllerWithIdentifier:@"ActivityDetilVC"];
+        
+        //活动id
+        MainModel *mainModel = self.listArray[indexPath.section][indexPath.row];
+        activityVC.activityId = mainModel.activityId;
+        
         [self.navigationController pushViewController:activityVC animated:YES];
+        
+        
+        
+        
     }else{
         ThemeViewController *themeVC = [[ThemeViewController alloc] init];
         [self.navigationController pushViewController:themeVC animated:YES];
     }
+    
 }
+
 
 #pragma mark --------Custom Method
 //选择城市
