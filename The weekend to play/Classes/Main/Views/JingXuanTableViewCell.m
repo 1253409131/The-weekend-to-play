@@ -25,12 +25,14 @@
     //价格
     self.activityPriceLable.text = jignxuanModel.price;
     //喜欢的人数
-    [self.loveCountButton setTitle:jignxuanModel.counts forState:UIControlStateNormal];
+    
+    [self.loveCountButton setTitle:[NSString stringWithFormat:@"%@",jignxuanModel.counts] forState:UIControlStateNormal];
+    //年龄
+    self.AgeLable.text = jignxuanModel.age;
     
     
 }
-
-
+//@property (weak, nonatomic) IBOutlet UILabel *AgeLable;
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
     [super setSelected:selected animated:animated];

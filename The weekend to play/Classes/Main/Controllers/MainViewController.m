@@ -375,7 +375,7 @@
             NSArray *acDataArray = dic[@"acData"];
             for (NSDictionary *dict in acDataArray) {
                 MainModel *model = [[MainModel alloc] initWithDictionary:dict];
-                NSLog(@"model = %@",model);
+//                NSLog(@"model = %@",model);
                 [self.activityArray addObject:model];
             }
             [self.listArray addObject:self.activityArray];

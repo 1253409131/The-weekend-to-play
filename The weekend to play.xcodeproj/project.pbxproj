@@ -37,6 +37,9 @@
 		7A93B84C1C3FB77A009FE0E0 /* JingXuanProperty List.plist in Resources */ = {isa = PBXBuildFile; fileRef = 7A93B84B1C3FB77A009FE0E0 /* JingXuanProperty List.plist */; };
 		7A93B84F1C3FBE44009FE0E0 /* JingXuanModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A93B84E1C3FBE44009FE0E0 /* JingXuanModel.m */; };
 		7AC6BF121C3BA08600F19997 /* MainModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 7AC6BF111C3BA08600F19997 /* MainModel.m */; };
+		7AD77C191C420BD90043F3A4 /* HotActivityModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 7AD77C181C420BD90043F3A4 /* HotActivityModel.m */; };
+		7AD77C201C420C2F0043F3A4 /* HotActivityTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7AD77C1E1C420C2F0043F3A4 /* HotActivityTableViewCell.m */; };
+		7AD77C211C420C2F0043F3A4 /* HotActivityTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7AD77C1F1C420C2F0043F3A4 /* HotActivityTableViewCell.xib */; };
 		7ADE229B1C3A1C3A0039245D /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 7ADE229A1C3A1C3A0039245D /* main.m */; };
 		7ADE229E1C3A1C3A0039245D /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 7ADE229D1C3A1C3A0039245D /* AppDelegate.m */; };
 		7ADE22A01C3A1C3A0039245D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7ADE229F1C3A1C3A0039245D /* Assets.xcassets */; };
@@ -95,6 +98,11 @@
 		7A93B84E1C3FBE44009FE0E0 /* JingXuanModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JingXuanModel.m; sourceTree = "<group>"; };
 		7AC6BF101C3BA08600F19997 /* MainModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainModel.h; sourceTree = "<group>"; };
 		7AC6BF111C3BA08600F19997 /* MainModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainModel.m; sourceTree = "<group>"; };
+		7AD77C171C420BD90043F3A4 /* HotActivityModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HotActivityModel.h; sourceTree = "<group>"; };
+		7AD77C181C420BD90043F3A4 /* HotActivityModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HotActivityModel.m; sourceTree = "<group>"; };
+		7AD77C1D1C420C2F0043F3A4 /* HotActivityTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HotActivityTableViewCell.h; sourceTree = "<group>"; };
+		7AD77C1E1C420C2F0043F3A4 /* HotActivityTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HotActivityTableViewCell.m; sourceTree = "<group>"; };
+		7AD77C1F1C420C2F0043F3A4 /* HotActivityTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HotActivityTableViewCell.xib; sourceTree = "<group>"; };
 		7ADE22961C3A1C3A0039245D /* The weekend to play.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "The weekend to play.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		7ADE229A1C3A1C3A0039245D /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		7ADE229C1C3A1C3A0039245D /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -223,6 +231,8 @@
 				7AC6BF111C3BA08600F19997 /* MainModel.m */,
 				7A93B84D1C3FBE44009FE0E0 /* JingXuanModel.h */,
 				7A93B84E1C3FBE44009FE0E0 /* JingXuanModel.m */,
+				7AD77C171C420BD90043F3A4 /* HotActivityModel.h */,
+				7AD77C181C420BD90043F3A4 /* HotActivityModel.m */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -241,6 +251,9 @@
 				7A93B8461C3FA3BB009FE0E0 /* JingXuanTableViewCell.h */,
 				7A93B8471C3FA3BB009FE0E0 /* JingXuanTableViewCell.m */,
 				7A93B8481C3FA3BB009FE0E0 /* JingXuanTableViewCell.xib */,
+				7AD77C1D1C420C2F0043F3A4 /* HotActivityTableViewCell.h */,
+				7AD77C1E1C420C2F0043F3A4 /* HotActivityTableViewCell.m */,
+				7AD77C1F1C420C2F0043F3A4 /* HotActivityTableViewCell.xib */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -431,6 +444,7 @@
 				7A47BDFF1C3F5E1400D22785 /* Property List.plist in Resources */,
 				7A23CFA81C3A509900BD343A /* DiscoverStoryboard.storyboard in Resources */,
 				7A93B8431C3F9EAD009FE0E0 /* blueArrow.png in Resources */,
+				7AD77C211C420C2F0043F3A4 /* HotActivityTableViewCell.xib in Resources */,
 				7A23CFA61C3A507200BD343A /* MainStoryboard.storyboard in Resources */,
 				7ADE22A01C3A1C3A0039245D /* Assets.xcassets in Resources */,
 				7ADE22A31C3A1C3A0039245D /* LaunchScreen.storyboard in Resources */,
@@ -496,6 +510,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7AD77C201C420C2F0043F3A4 /* HotActivityTableViewCell.m in Sources */,
 				7A47BDFB1C3F3F8500D22785 /* UIView+Extension.m in Sources */,
 				7A23CFEB1C3A766E00BD343A /* MainTableViewCell.m in Sources */,
 				7A69F2B11C3CC8D0002ECFCB /* HotActivityViewController.m in Sources */,
@@ -518,6 +533,7 @@
 				7AC6BF121C3BA08600F19997 /* MainModel.m in Sources */,
 				7A8933661C3D202C00B43477 /* UIViewController+Common.m in Sources */,
 				7A69F2A51C3CC86D002ECFCB /* ActivityViewController.m in Sources */,
+				7AD77C191C420BD90043F3A4 /* HotActivityModel.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -17,7 +17,7 @@
 
 @property (nonatomic, assign) BOOL refreshing;
 @property (nonatomic, strong) PullingRefreshTableView *tableView;
-
+@property (nonatomic, strong) NSMutableArray *jignxuanArray;
 @end
 
 @implementation JingXuanViewController
@@ -34,16 +34,23 @@
    
 }
 
+- (NSMutableArray *)jignxuanArray{
+    if (_jignxuanArray == nil) {
+        self.jignxuanArray = [NSMutableArray new];
+    }
+    return _jignxuanArray;
+}
 
 #pragma mark --------- UITableViewDataSource
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
-    return 4;
+    return self.jignxuanArray.count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     JingXuanTableViewCell *jingxuanCell = [tableView dequeueReusableCellWithIdentifier:@"Cell" forIndexPath:indexPath];
-    jingxuanCell.backgroundColor = [UIColor brownColor];
-    
+//    jingxuanCell.backgroundColor = [UIColor brownColor];
+    tableView.rowHeight = 100;
+    jingxuanCell.jignxuanModel = self.jignxuanArray[indexPath.row];
     return jingxuanCell;
 }
 
@@ -85,6 +92,22 @@
         
     } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
         QJZLog(@"responseObject = %@",responseObject);
+        NSDictionary *dic = responseObject;
+        NSString *stasus = dic[@"status"];
+        NSInteger code = [dic[@"code"] integerValue];
+        if ([stasus isEqualToString:@"success"] && code == 0) {
+            NSDictionary *dict = dic[@"success"];
+            NSArray *acDataArray = dict[@"acData"];
+            for (NSDictionary *dict in acDataArray) {
+                JingXuanModel *model = [[JingXuanModel alloc] initWithDictionary:dict];
+                QJZLog(@"model = %@",model);
+                [self.jignxuanArray addObject:model];
+            
+            }
+            [self.tableView reloadData];
+        }
+        
+        
         
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
         QJZLog(@"error = %@",error);

@@ -18,7 +18,7 @@
         if ([self.type integerValue] == 1) {
             //如果是推荐活动
             self.price = dict[@"price"];
-            NSLog(@"self.price = %@",self.price);
+//            NSLog(@"self.price = %@",self.price);
             self.lat = [dict[@"lat"] floatValue];
             self.lng = [dict[@"lng"] floatValue];
             self.address = dict[@"address"];
@@ -32,7 +32,7 @@
         
         self.image_big = dict[@"image_big"];
         self.title = dict[@"title"];
-        NSLog(@"self.title = %@",self.title);
+//        NSLog(@"self.title = %@",self.title);
         self.activityId = dict[@"id"];
        
         
