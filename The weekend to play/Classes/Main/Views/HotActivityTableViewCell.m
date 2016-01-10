@@ -11,7 +11,8 @@
 @interface HotActivityTableViewCell ()
 
 @property (weak, nonatomic) IBOutlet UIImageView *imageHotView;
-@property (weak, nonatomic) IBOutlet UILabel *zanLable;
+@property (weak, nonatomic) IBOutlet UILabel *dianZanLable;
+
 
 @end
 @implementation HotActivityTableViewCell
@@ -26,9 +27,7 @@
     //图片
     [self.imageHotView sd_setImageWithURL:[NSURL URLWithString:hotActivityModel.image] placeholderImage:nil];
     //点赞
-    self.zanLable.text = hotActivityModel.counts;
-    
-    
+    self.dianZanLable.text = hotActivityModel.counts;
 }
 
 

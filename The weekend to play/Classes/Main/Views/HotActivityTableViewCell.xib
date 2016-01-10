@@ -29,8 +29,8 @@
                 </subviews>
             </tableViewCellContentView>
             <connections>
+                <outlet property="dianZanLable" destination="bFR-IP-0Mw" id="r0j-sJ-Kag"/>
                 <outlet property="imageHotView" destination="IPs-0D-eh0" id="9O4-0Z-t0X"/>
-                <outlet property="zanLable" destination="bFR-IP-0Mw" id="GJ7-uC-ZCz"/>
             </connections>
             <point key="canvasLocation" x="616" y="353"/>
         </tableViewCell>
