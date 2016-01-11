@@ -10,6 +10,8 @@
 #import "PullingRefreshTableView.h"
 #import "JingXuanTableViewCell.h"
 #import <AFNetworking/AFHTTPSessionManager.h>
+#import "ActivityViewController.h"
+#import "JingXuanModel.h"
 @interface JingXuanViewController ()<UITableViewDataSource,UITableViewDelegate,PullingRefreshTableViewDelegate>
 {
     NSInteger _pageCount;//定义请求的页码
@@ -27,6 +29,8 @@
     // Do any additional setup after loading the view.
     self.title = @"精选活动";
     [self showBackButton];
+    //在精选活动页面隐藏tabBar
+    self.tabBarController.tabBar.hidden = YES;
     self.tableView.tableFooterView = [[UIView alloc] init];
     [self.tableView registerNib:[UINib nibWithNibName:@"JingXuanTableViewCell" bundle:nil] forCellReuseIdentifier:@"Cell"];
     [self.view addSubview:self.tableView];
@@ -58,7 +62,12 @@
 #pragma mark ---------- UITableViewDelegate
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
-    
+    JingXuanModel *jingmodel = self.jignxuanArray[indexPath.row];
+    UIStoryboard *mainStoryBoard = [UIStoryboard storyboardWithName:@"MainStoryboard" bundle:nil];
+    ActivityViewController *activityVC = [mainStoryBoard instantiateViewControllerWithIdentifier:@"ActivityDetilVC"];
+    //活动id
+    activityVC.activityId = jingmodel.activityId;
+    [self.navigationController pushViewController:activityVC animated:YES];
 }
 
 
@@ -98,6 +107,13 @@
         if ([stasus isEqualToString:@"success"] && code == 0) {
             NSDictionary *dict = dic[@"success"];
             NSArray *acDataArray = dict[@"acData"];
+            
+            if (self.refreshing) {
+                //下拉刷新的时候需要移除数组中的元素
+                if (self.jignxuanArray.count > 0) {
+                    [self.jignxuanArray removeAllObjects];
+                }
+            }
             for (NSDictionary *dict in acDataArray) {
                 JingXuanModel *model = [[JingXuanModel alloc] initWithDictionary:dict];
                 QJZLog(@"model = %@",model);

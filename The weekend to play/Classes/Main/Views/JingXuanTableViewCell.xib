@@ -29,17 +29,10 @@
                         <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PBj-k1-58i">
-                        <rect key="frame" x="286" y="49" width="73" height="25"/>
-                        <state key="normal" title=" 0" image="list_like_heart">
-                            <color key="titleColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
-                        </state>
-                    </button>
                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="message_item_state_read" translatesAutoresizingMaskIntoConstraints="NO" id="TWw-Tm-lz4">
                         <rect key="frame" x="85" y="30" width="57" height="27"/>
                     </imageView>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="owX-kb-c0f">
-
                         <rect key="frame" x="91" y="34" width="64" height="21"/>
                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                         <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
@@ -47,13 +40,16 @@
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="99m" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="w1D-Sv-aXl">
                         <rect key="frame" x="319" y="9" width="56" height="21"/>
-
-                        <rect key="frame" x="89" y="33" width="42" height="21"/>
-
                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                         <nil key="highlightedColor"/>
                     </label>
+                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PBj-k1-58i">
+                        <rect key="frame" x="286" y="49" width="89" height="25"/>
+                        <state key="normal" title=" 0" image="list_like_heart">
+                            <color key="titleColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                        </state>
+                    </button>
                 </subviews>
             </tableViewCellContentView>
             <connections>
@@ -65,11 +61,7 @@
                 <outlet property="headImageVIew" destination="SbX-4D-p2t" id="yuh-nz-WPd"/>
                 <outlet property="loveCountButton" destination="PBj-k1-58i" id="2D2-KZ-FdM"/>
             </connections>
-
             <point key="canvasLocation" x="404.5" y="399"/>
-
-            <point key="canvasLocation" x="373.5" y="396"/>
-
         </tableViewCell>
     </objects>
     <resources>

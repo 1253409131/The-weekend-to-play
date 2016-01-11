@@ -27,4 +27,12 @@
 #define KHotActivity @"http://e.kumi.cn/app/positionlist.php?_s_=e2b71c66789428d5385b06c178a88db2&_t_=1452237051&channelid=appstore&cityid=1&lat=34.61351314785497&limit=30&lng=112.4140755658942&page=1"
 
 
+#define kYanchujumu @"http://e.kumi.cn/app/v1.3/catelist.php?_s_=94caa3db2bf10b313499712cba00e30c&_t_=1452399959&channelid=appstore&cityid=1&lat=34.61358493783437&limit=30&lng=112.4140368252746&page=1&typeid=6"
+#define kJingdianchanggaun @"http://e.kumi.cn/app/v1.3/catelist.php?_s_=94caa3db2bf10b313499712cba00e30c&_t_=1452399959&channelid=appstore&cityid=1&lat=34.61358493783437&limit=30&lng=112.4140368252746&page=1&typeid=23"
+#define kXuexiyizhi @"http://e.kumi.cn/app/v1.3/catelist.php?_s_=94caa3db2bf10b313499712cba00e30c&_t_=1452399959&channelid=appstore&cityid=1&lat=34.61358493783437&limit=30&lng=112.4140368252746&page=1&typeid=22"
+#define kQinzilvyou @"http://e.kumi.cn/app/v1.3/catelist.php?_s_=94caa3db2bf10b313499712cba00e30c&_t_=1452399959&channelid=appstore&cityid=1&lat=34.61358493783437&limit=30&lng=112.4140368252746&page=1&typeid=21"
+
+
+
+
 #endif /* Header_h */

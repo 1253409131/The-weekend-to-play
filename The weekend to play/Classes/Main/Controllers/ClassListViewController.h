@@ -9,5 +9,5 @@
 #import <UIKit/UIKit.h>
 
 @interface ClassListViewController : UIViewController
-
+@property (nonatomic, copy) NSString *btnId;
 @end

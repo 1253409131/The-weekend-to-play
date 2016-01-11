@@ -11,6 +11,7 @@
 @interface HotActivityModel : NSObject
 @property (nonatomic, copy) NSString *image;
 @property (nonatomic, copy) NSString *counts;
+@property (nonatomic, copy) NSString *hotId;
 
 - (instancetype)initWithDictionary:(NSDictionary *)dict;
 @end

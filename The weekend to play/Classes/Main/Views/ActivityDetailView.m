@@ -133,7 +133,15 @@ CGFloat _lastLabelBottom;
             }
         }
     }
-    self.mainScrollView.contentSize = CGSizeMake(kWidth, _lastLabelBottom );
+    
+    if (_lastLabelBottom > _previousImageBottom) {
+        self.mainScrollView.contentSize = CGSizeMake(kWidth, _lastLabelBottom );
+    }
+    self.mainScrollView.contentSize = CGSizeMake(kWidth, _previousImageBottom + 10);
+    
+    
+    
+    
 }
 
 

@@ -10,6 +10,8 @@
 #import "PullingRefreshTableView.h"
 #import "HotActivityTableViewCell.h"
 #import <AFNetworking/AFHTTPSessionManager.h>
+#import "HotActivityModel.h"
+#import "ThemeViewController.h"
 @interface HotActivityViewController ()<UITableViewDataSource,UITableViewDelegate,PullingRefreshTableViewDelegate>
 {
     NSInteger _pageCount;//定义请求的页码
@@ -28,6 +30,8 @@
     // Do any additional setup after loading the view.
     self.title = @"热门专题";
     self.view.backgroundColor = [UIColor greenColor];
+    //在热门专题页面隐藏tabBar
+    self.tabBarController.tabBar.hidden = YES;
     [self showBackButton];
     [self.view addSubview:self.tableView];
     self.tableView.tableFooterView = [[UIView alloc] init];
@@ -48,6 +52,7 @@
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
+    
     HotActivityTableViewCell *hotActivityCell = [tableView dequeueReusableCellWithIdentifier:@"Cell" forIndexPath:indexPath];
 //        hotActivityCell.backgroundColor = [UIColor brownColor];
     hotActivityCell.hotActivityModel = self.hotActivityArray[indexPath.row];
@@ -59,10 +64,11 @@
 #pragma mark ---------- UITableViewDelegate
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
-    
+    HotActivityModel *hotModel = self.hotActivityArray[indexPath.row];
+    ThemeViewController *themeVC = [[ThemeViewController alloc] init];
+    themeVC.themeid = hotModel.hotId;
+    [self.navigationController pushViewController:themeVC animated:YES];
 }
-
-
 
 #pragma mark -------- PullingRefreshTableViewDelegate
 //tableView开始刷新的时候调用
@@ -70,13 +76,13 @@
 - (void)pullingTableViewDidStartLoading:(PullingRefreshTableView *)tableView{
     self.refreshing = YES;
     [self performSelector:@selector(loadData) withObject:nil afterDelay:1.0];
-    _pageCount = 1;
+    _pageCount += 1;
 }
 //下拉
 - (void)pullingTableViewDidStartRefreshing:(PullingRefreshTableView *)tableView{
     self.refreshing = YES;
     [self performSelector:@selector(loadData) withObject:nil afterDelay:1.0];
-    _pageCount += 1;
+    _pageCount = 1;
 }
 //刷新完成时间
 - (NSDate *)pullingTableViewRefreshingFinishedDate{
@@ -101,26 +107,24 @@
         if ([status isEqualToString:@"success"] && code == 0) {
             NSDictionary *dict = dic[@"success"];
             NSArray *rcDataArray = dict[@"rcData"];
+            
+            if (self.refreshing) {
+                if (self.hotActivityArray.count > 0) {
+                    [self.hotActivityArray removeAllObjects];
+                }
+            }
             for (NSDictionary *dict in rcDataArray) {
                 HotActivityModel *model = [[HotActivityModel alloc] initWithDictionary:dict];
                 [self.hotActivityArray addObject:model];
             }
             [self.tableView reloadData];
+        }else{
+            
         }
       
-                
-        
-        
-        
-        
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
         QJZLog(@"error = %@",error);
-        
     }];
-    
-    
-    
-    
     //完成加载
     [self.tableView tableViewDidFinishedLoading];
     self.tableView.reachedTheEnd = NO;

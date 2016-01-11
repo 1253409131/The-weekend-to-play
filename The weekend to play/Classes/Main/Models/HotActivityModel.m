@@ -15,6 +15,7 @@
     if (self) {
         self.image = dict[@"img"];
         self.counts = dict[@"counts"];
+        self.hotId = dict[@"id"];
         QJZLog(@"self.counts = %@",self.counts);
     }
     return self;
