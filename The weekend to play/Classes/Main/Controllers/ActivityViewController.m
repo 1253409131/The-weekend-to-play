@@ -9,7 +9,7 @@
 #import "ActivityViewController.h"
 //#import <AFNetworking/AFHTTPSessionManager.h>
 #import "AFHTTPSessionManager.h"
-#import <MBProgressHUD.h>
+
 #import "ActivityDetailView.h"
 @interface ActivityViewController ()
 
@@ -40,12 +40,12 @@
 - (void)getModel{
     AFHTTPSessionManager *sessionManager = [AFHTTPSessionManager manager];
     sessionManager.responseSerializer.acceptableContentTypes = [NSSet setWithObjects:@"text/html", nil];
-    [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+    
     [sessionManager GET:[NSString stringWithFormat:@"%@&id=%@",kActivityDetail,self.activityId] parameters:nil progress:^(NSProgress * _Nonnull downloadProgress) {
 //        [MBProgressHUD hideHUDForView:self.view animated:YES];
 //        QJZLog(@"downloadProgress = %@",downloadProgress);
     } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
-        [MBProgressHUD hideHUDForView:self.view animated:YES];
+        
 //        QJZLog(@"responseObject = %@",responseObject);
         
         NSDictionary *dic = responseObject;
@@ -60,7 +60,7 @@
         
         
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
-        [MBProgressHUD hideHUDForView:self.view animated:YES];
+        
 //        QJZLog(@"error = %@",error);
     }];
 }

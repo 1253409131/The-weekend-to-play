@@ -20,6 +20,8 @@
 - (void)setJignxuanModel:(JingXuanModel *)jignxuanModel{
     //图片
     [self.headImageVIew sd_setImageWithURL:[NSURL URLWithString:jignxuanModel.image] placeholderImage:nil];
+    self.headImageVIew.layer.cornerRadius = 20;
+    self.headImageVIew.clipsToBounds = YES;
     //标题
     self.activityTitleLable.text = jignxuanModel.title;
     //价格

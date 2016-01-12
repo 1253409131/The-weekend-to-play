@@ -111,8 +111,9 @@
                 
             }
         }
+        //保留最后一个lable的高度，就是scrollerview的高度
+        _lastLabelBottom = label.bottom > _previousImageBottom ? label.bottom + 70 : _previousImageBottom + 70;
     }
-    self.mainScrollerView.contentSize = CGSizeMake(kWidth, _lastLabelBottom );
 }
 
 
