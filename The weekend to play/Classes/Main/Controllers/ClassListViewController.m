@@ -50,13 +50,9 @@
     [self.tableView registerNib:[UINib nibWithNibName:@"JingXuanTableViewCell" bundle:nil] forCellReuseIdentifier:@"Cell"];
     
     [self.view addSubview:self.tableView];
-    [self.tableView launchRefreshing];
+//    [self.tableView launchRefreshing];
     
     //第一次进入列表，请求全部的接口数据
-    [self getShowRequest];
-    [self getTouristRequest];
-    [self getStudyRequest];
-    [self getFamilyRequest];
     [self chooseRequest];
     
     //根据上一页选择的按钮，确定显示第几页数据
@@ -134,7 +130,7 @@
     [ProgressHUD show:@"拼命加载中..."];
     
     //typeid = 6  //演出剧目
-    [sessionManager GET:[NSString stringWithFormat:@"%@&page=%ld&typeid%@",kClass, _pageCount, @(6)] parameters:nil progress:^(NSProgress * _Nonnull downloadProgress) {
+    [sessionManager GET:[NSString stringWithFormat:@"%@&page=%ld&typeid=%@",kClass, _pageCount, @(6)] parameters:nil progress:^(NSProgress * _Nonnull downloadProgress) {
         
         
     } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
@@ -163,6 +159,9 @@
         }else{
             
         }
+        [self.tableView tableViewDidFinishedLoading];
+        self.tableView.reachedTheEnd = NO;
+        [self.tableView reloadData];
         //根据上一页选择的按钮，确定显示第几页数据
         [self showPreviousSelectButton];
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
@@ -177,7 +176,7 @@
     [ProgressHUD show:@"拼命加载中..."];
     
     //typeid = 23  // 景点场馆
-    [sessionManager GET:[NSString stringWithFormat:@"%@&page=%ld&typeid%@",kClass, _pageCount, @(23)] parameters:nil progress:^(NSProgress * _Nonnull downloadProgress) {
+    [sessionManager GET:[NSString stringWithFormat:@"%@&page=%ld&typeid=%@",kClass, _pageCount, @(23)] parameters:nil progress:^(NSProgress * _Nonnull downloadProgress) {
         
         
     } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
@@ -205,6 +204,9 @@
         }else{
             
         }
+        [self.tableView tableViewDidFinishedLoading];
+        self.tableView.reachedTheEnd = NO;
+        [self.tableView reloadData];
         //根据上一页选择的按钮，确定显示第几页数据
         [self showPreviousSelectButton];
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
@@ -219,7 +221,7 @@
     [ProgressHUD show:@"拼命加载中..."];
     
     //typeid = 22  // 学习益智
-    [sessionManager GET:[NSString stringWithFormat:@"%@&page=%ld&typeid%@",kClass, _pageCount, @(22)] parameters:nil progress:^(NSProgress * _Nonnull downloadProgress) {
+    [sessionManager GET:[NSString stringWithFormat:@"%@&page=%ld&typeid=%@",kClass, _pageCount, @(22)] parameters:nil progress:^(NSProgress * _Nonnull downloadProgress) {
         
         
     } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
@@ -247,6 +249,9 @@
         }else{
             
         }
+        [self.tableView tableViewDidFinishedLoading];
+        self.tableView.reachedTheEnd = NO;
+        [self.tableView reloadData];
         //根据上一页选择的按钮，确定显示第几页数据
         [self showPreviousSelectButton];
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
@@ -261,7 +266,7 @@
     [ProgressHUD show:@"拼命加载中..."];
     
     //typeid = 21  // 亲子旅游
-    [sessionManager GET:[NSString stringWithFormat:@"%@&page=%ld&typeid%@",kClass, _pageCount, @(21)] parameters:nil progress:^(NSProgress * _Nonnull downloadProgress) {
+    [sessionManager GET:[NSString stringWithFormat:@"%@&page=%ld&typeid=%@",kClass, _pageCount, @(21)] parameters:nil progress:^(NSProgress * _Nonnull downloadProgress) {
         
         
     } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
@@ -288,6 +293,9 @@
         }else{
             
         }
+        [self.tableView tableViewDidFinishedLoading];
+        self.tableView.reachedTheEnd = NO;
+        [self.tableView reloadData];
         //根据上一页选择的按钮，确定显示第几页数据
         [self showPreviousSelectButton];
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
@@ -296,8 +304,6 @@
     }];
     
 }
-
-
 - (void)showPreviousSelectButton{
     if (self.refreshing) {//下拉删除原来的数据
         if (self.showDataArray.count > 0) {
@@ -333,16 +339,12 @@
     
     //完成加载
     [self.tableView reloadData];
-    [self.tableView tableViewDidFinishedLoading];
-    self.tableView.reachedTheEnd = NO;
+
 }
-
-
-
 - (void)chooseRequest{
     switch (self.classifyListType) {
         case ClassifyListTypeShowRepertoire:
-            [self getFamilyRequest];
+            [self getShowRequest];
             break;
         case ClassifyListTypeTouristPlace:
             [self getTouristRequest];
@@ -359,17 +361,12 @@
     }
 }
 
-
-
-
-
-
 #pragma mark -------Lazyloading
 
 - (PullingRefreshTableView *)tableView{
     if (_tableView == nil) {
         self.tableView = [[PullingRefreshTableView alloc] initWithFrame:CGRectMake(0, 64 + 64, kWidth, kHeight - 64) pullingDelegate:self];
-        self.tableView.rowHeight = 90;
+        self.tableView.rowHeight = 120;
         self.tableView.dataSource = self;
         self.tableView.delegate = self;
     }
@@ -419,15 +416,12 @@
         self.segmentedControl.allowNoSelection = NO;
         self.segmentedControl.frame = CGRectMake(0, 64, kWidth, 44);
         self.segmentedControl.indicatorThickness = 4;
-        self.segmentedControl.selectedSegmentIndex = self.classifyListType;
-//        __block NSInteger selectIndex;
+        self.segmentedControl.selectedSegmentIndex = self.classifyListType -1;
         
 //        //返回点击的是哪个按钮
-//        [self.segmentedControl setIndexChangeBlock:^(NSInteger index) {
-//            NSLog(@"1: block --> %@", @(index));
-//            selectIndex = index;
-//        }];
-//        self.classifyListType = selectIndex;
+        [self.segmentedControl setIndexChangeBlock:^(NSInteger index) {
+            NSLog(@"1: block --> %@", @(index));
+        }];
         [self.segmentedControl addTarget:self action:@selector(segmentCtrlValuechange:) forControlEvents:UIControlEventValueChanged];
     }
     return _segmentedControl;

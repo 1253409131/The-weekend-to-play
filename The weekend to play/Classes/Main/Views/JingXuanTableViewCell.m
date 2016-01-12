@@ -12,7 +12,7 @@
 
 - (void)awakeFromNib {
     // Initialization code
-    self.frame = CGRectMake(0, 0, kWidth, 90);
+    self.frame = CGRectMake(0, 0, kWidth, 120);
     
 }
 

@@ -55,7 +55,7 @@
     //
     [self configTableViewHeaderView];
     //请求网络数据
-//    [self requestModel];
+    [self requestModel];
     //启动定时器
     [self startTimer];
     
@@ -354,7 +354,7 @@
 //四个按钮
 - (void)mainActivityButtonAction:(UIButton *)btn{
     ClassListViewController *classListVC = [[ClassListViewController alloc] init];
-    classListVC.classifyListType = btn.tag - 100;
+    classListVC.classifyListType = btn.tag - 100 + 1;
     [self.navigationController pushViewController:classListVC animated:YES];
     
 }

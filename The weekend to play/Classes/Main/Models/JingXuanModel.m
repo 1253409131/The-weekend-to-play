@@ -21,7 +21,6 @@
         self.activityId = dict[@"id"];
         self.type = dict[@"type"];
         self.address = dict[@"adress"];
-        QJZLog(@"self.================price = %@",self.price);
     }
     return self;
 }

@@ -53,7 +53,7 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     JingXuanTableViewCell *jingxuanCell = [tableView dequeueReusableCellWithIdentifier:@"Cell" forIndexPath:indexPath];
 //    jingxuanCell.backgroundColor = [UIColor brownColor];
-    tableView.rowHeight = 100;
+    
     jingxuanCell.jignxuanModel = self.jignxuanArray[indexPath.row];
     return jingxuanCell;
 }
@@ -116,7 +116,7 @@
             }
             for (NSDictionary *dict in acDataArray) {
                 JingXuanModel *model = [[JingXuanModel alloc] initWithDictionary:dict];
-                QJZLog(@"model = %@",model);
+//                QJZLog(@"model = %@",model);
                 [self.jignxuanArray addObject:model];
             
             }
@@ -149,8 +149,10 @@
 - (PullingRefreshTableView *)tableView{
     if (_tableView == nil) {
         self.tableView = [[PullingRefreshTableView alloc] initWithFrame:CGRectMake(0, 64, kWidth, kHeight - 64) pullingDelegate:self];
+        self.tableView.rowHeight = 120;
         self.tableView.dataSource = self;
         self.tableView.delegate = self;
+        
     }
     return _tableView;
 }
