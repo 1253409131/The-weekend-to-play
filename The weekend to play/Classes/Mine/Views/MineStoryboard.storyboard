@@ -8,7 +8,7 @@
         <!--我的-->
         <scene sceneID="H6t-WV-8Wk">
             <objects>
-                <viewController id="Mke-YW-jiH" sceneMemberID="viewController">
+                <viewController id="Mke-YW-jiH" customClass="MineViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="Ali-gF-kP8"/>
                         <viewControllerLayoutGuide type="bottom" id="xZD-3n-5Ow"/>
@@ -16,7 +16,6 @@
                     <view key="view" contentMode="scaleToFill" id="Ih3-BG-IdM">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" red="1" green="0.32851412790000001" blue="0.2832480081" alpha="1" colorSpace="calibratedRGB"/>
                     </view>
                     <navigationItem key="navigationItem" title="我的" id="7hZ-Jb-Grl"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
@@ -34,6 +33,7 @@
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="ggr-U0-QOQ">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <color key="barTintColor" red="0.066666666669999999" green="0.76862745099999996" blue="0.79607843140000001" alpha="1" colorSpace="calibratedRGB"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>

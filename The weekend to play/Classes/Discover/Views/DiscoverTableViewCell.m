@@ -28,6 +28,8 @@
 - (void)setDiscoverModel:(DiscoverModel *)discoverModel{
     //图片
     [self.LingkImageView sd_setImageWithURL:[NSURL URLWithString:discoverModel.discoverImage] placeholderImage:nil];
+    self.LingkImageView.layer.cornerRadius = 55;
+    self.LingkImageView.clipsToBounds = YES;
     self.LinkLable.text = discoverModel.discoverTitle;
 }
 

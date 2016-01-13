@@ -13,11 +13,13 @@
 #import "ProgressHUD.h"
 #import "DiscoverModel.h"
 #import "ActivityViewController.h"
+#import "HWTool.h"
 
 @interface DiscoverViewController ()<UITableViewDataSource, UITableViewDelegate,PullingRefreshTableViewDelegate>
 
 @property (nonatomic, strong) PullingRefreshTableView *tableView;
 @property (nonatomic, strong) NSMutableArray *discoverArray;
+@property (nonatomic, assign) BOOL refreshing;
 @end
 
 @implementation DiscoverViewController
@@ -25,10 +27,11 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    
+     self.edgesForExtendedLayout = UIRectEdgeNone;
     [self.view addSubview:self.tableView];
     [self.tableView registerNib:[UINib nibWithNibName:@"DiscoverTableViewCell" bundle:nil] forCellReuseIdentifier:@"cell"];
     [self.tableView launchRefreshing];
+    
     
     
 }
@@ -70,16 +73,22 @@
 - (NSDate *)pullingTableViewRefreshingFinishedDate{
     return [HWTool getSystemNowDate];
 }
-
+//手指开始拖动
 - (void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate{
     [self.tableView tableViewDidEndDragging:scrollView];
 }
 
+//手指开始拖动
 -(void)scrollViewDidScroll:(UIScrollView *)scrollView{
     [self.tableView tableViewDidScroll:scrollView];
 
 }
 
+-(void)viewWillAppear:(BOOL)animated{
+    [self viewDidAppear:YES];
+    self.tabBarController.tabBar.hidden = NO;
+    
+}
 
 #pragma mark --------  Custom Method
 

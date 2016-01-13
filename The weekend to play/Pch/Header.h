@@ -17,7 +17,6 @@ typedef NS_ENUM(NSInteger, ClassifyListType) {
 };
 
 
-
 //首页数据接口
 //以后把所有的接口放在HWDefine中
 #define kMainDataList @"http://e.kumi.cn/app/v1.3/index.php?_s_=02a411494fa910f5177d82a6b0a63788&_t_=1451307342&channelid=appstore&cityid=1&lat=34.62172291944134&limit=30&lng=112.4149512442411&page=1"
@@ -43,6 +42,20 @@ typedef NS_ENUM(NSInteger, ClassifyListType) {
 
 //发现
 #define kDiscover @"http://e.kumi.cn/app/found.php?_s_=a82c7d49216aedb18c04a20fd9b0d5b2&_t_=1451310230&channelid=appstore&cityid=1&lat=34.62172291944134&lng=112.4149512442411"
+
+
+//新浪微博
+#define kAppKey @"2499518053"
+#define kAppSecret @"4ae7dff98735d990396c59e8a86f668d"
+#define kRedirectURI @"https://api.weibo.com/oauth2/default.html"
+
+
+
+
+
+
+
+
 
 
 

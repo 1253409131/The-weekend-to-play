@@ -23,6 +23,9 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    
+    //在页面隐藏tabBar
+    self.tabBarController.tabBar.hidden = YES;
     [self showBackButton];
 }
 #pragma mark --------- Cus
