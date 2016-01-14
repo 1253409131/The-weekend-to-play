@@ -16,6 +16,8 @@
 @property (nonatomic, strong) NSArray *imageArray;
 @property (nonatomic, strong) NSMutableArray *titleArray;
 @property (nonatomic, strong) UILabel *nikeNameLable;
+@property(nonatomic, strong) UIView *blackView;
+@property(nonatomic, strong) UIView *shareView;
 @end
 
 @implementation MineViewController
@@ -77,6 +79,9 @@
     switch (indexPath.row) {
         case 0:
         {
+            [ProgressHUD show:@"正在为您清理中..."];
+            [self performSelector:@selector(clearImage) withObject:nil afterDelay:5.0];
+            
             //清除缓存
             QJZLog(@"%@",NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES));
             SDImageCache *imageCache = [SDImageCache sharedImageCache];
@@ -123,14 +128,23 @@
     }
 }
 
-
+- (void)clearImage{
+    [ProgressHUD showSuccess:@"占您的地儿已经挪开"];
+    //清除缓存
+    QJZLog(@"%@",NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES));
+    SDImageCache *imageCache = [SDImageCache sharedImageCache];
+    [imageCache clearDisk];
+    [self.titleArray replaceObjectAtIndex:0 withObject:@"清除图片缓存"];
+    //刷新单行数据
+    NSIndexPath *indexPath = [NSIndexPath indexPathForRow:0 inSection:0];
+    [self.tableView reloadRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
+}
 - (void)setUpTableViewHeaderView{
     UIView *headView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, kWidth, 210)];
     headView.backgroundColor = kColor;
     [headView addSubview:self.headImageButton];
     [headView addSubview:self.nikeNameLable];
     self.tableView.tableHeaderView = headView;
-    
 }
 
 
@@ -188,38 +202,53 @@
 #pragma mark ---------- 分享
 //分享
 - (void)share{
-    UIWindow *window = [[UIApplication sharedApplication].delegate window];
-    UIView *shareView = [[UIView alloc] initWithFrame:CGRectMake(0, kWidth - 350, kWidth, 350)];
-    shareView.backgroundColor = [UIColor redColor];
-    [window addSubview:shareView];
-    
     //微博
     UIButton *weiboBtn = [UIButton buttonWithType:UIButtonTypeCustom];
     weiboBtn.frame = CGRectMake(50, 40, 70, 70);
     [weiboBtn setImage:[UIImage imageNamed:@"sina_normal"] forState:UIControlStateNormal];
-    [shareView addSubview:weiboBtn];
+    [weiboBtn addTarget:self action:@selector(WeiBoAction) forControlEvents:UIControlEventTouchUpInside];
+    [self.shareView addSubview:weiboBtn];
+    
     
     //朋友圈 friend
     UIButton *friendBtn =[UIButton buttonWithType:UIButtonTypeCustom];
     friendBtn.frame = CGRectMake(130, 40, 70, 70);
     [friendBtn setImage:[UIImage imageNamed:@"wx_normal-1"] forState:UIControlStateNormal];
-    [shareView addSubview:friendBtn];
+    [friendBtn addTarget:self action:@selector(friendAction) forControlEvents:UIControlEventTouchUpInside];
+    [self.shareView addSubview:friendBtn];
     
     //Circle
     UIButton *circleBtn =[UIButton buttonWithType:UIButtonTypeCustom];
     circleBtn.frame = CGRectMake(210, 40, 70, 70);
     [circleBtn setImage:[UIImage imageNamed:@"py_normal"] forState:UIControlStateNormal];
-    [shareView addSubview:circleBtn];
+    [circleBtn addTarget:self action:@selector(circleAction) forControlEvents:UIControlEventTouchUpInside];
+    [self.shareView addSubview:circleBtn];
     
     //remove
     UIButton *removeBtn =[UIButton buttonWithType:UIButtonTypeCustom];
     removeBtn.frame = CGRectMake(20, 100, kWidth - 40, 44);
     [removeBtn setTitle:@"取消" forState:UIControlStateNormal];
-    [shareView addSubview:removeBtn];
+    [removeBtn addTarget:self action:@selector(removeAction) forControlEvents:UIControlEventTouchUpInside];
+    [self.shareView addSubview:removeBtn];
     
     [UIView animateWithDuration:1.0 animations:^{
-        
+        self.blackView.alpha = 0.8;
+        self.shareView.alpha = 1.0;
     }];
+}
+
+- (void)WeiBoAction{
+    
+}
+
+- (void)friendAction{
+    
+}
+- (void)circleAction{
+    
+}
+- (void)removeAction{
+    
 }
 
 - (void)login{
